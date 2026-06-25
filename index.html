@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Fila Virtual Interactiva - INACAP 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <main class="container">
+        
+        <div class="theme-toggle-container">
+            <button id="lamp-toggle" class="lamp-btn" title="Encender/Apagar Lámpara">
+                <span class="lamp-icon">💡</span>
+                <span id="lamp-text">Lámpara: Encendida (Modo Claro)</span>
+            </button>
+        </div>
+
+        <header class="header">
+            <h1>Simulador Diferencial de Fila Virtual</h1>
+            <p>Modelamiento matemático de saturación en sistemas digitales</p>
+        </header>
+
+        <div class="tabs">
+            <button id="tab-auto" class="tab-btn active">Modo Automático (Registro Vivo)</button>
+            <button id="tab-manual" class="tab-btn">Modo Manual (Control de Carga)</button>
+        </div>
+
+        <section id="panel-auto" class="card-form">
+            <h2>Registro de Nuevo Usuario</h2>
+            <form id="registration-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="user-name">Nombre Completo:</label>
+                        <input type="text" id="user-name" required placeholder="Ej. Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label for="user-rut">RUT / Identificación:</label>
+                        <input type="text" id="user-rut" required placeholder="Ej. 12345678-9">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">Ingresar a la Fila Virtual</button>
+            </form>
+
+            <div class="queue-visualization">
+                <h3>Fila Virtual en Tiempo Real (<span id="queue-count">0</span> usuarios)</h3>
+                <div id="live-queue" class="queue-slots">
+                    <p class="empty-msg">No hay usuarios en la fila. Registra uno arriba para comenzar.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="panel-manual" class="card-form hidden">
+            <h2>Panel de Configuración de Carga Manual</h2>
+            <div class="form-group">
+                <label for="range-x">Cantidad de usuarios concurrentes ($x$): <span id="range-val" class="badge">15</span></label>
+                <input type="range" id="range-x" min="0" max="50" value="15" class="slider">
+                <small class="help-text">Desliza para simular ráfagas masivas de tráfico de forma instantánea.</small>
+            </div>
+        </section>
+
+        <section class="card-form py-2">
+            <div class="form-group margin-0">
+                <label for="capacidad-atencion">Capacidad de Procesamiento del Sistema (atenciones/min):</label>
+                <input type="number" id="capacidad-atencion" min="0.5" step="0.5" value="1.0">
+            </div>
+        </section>
+
+        <section id="result-container" class="card-result">
+            <h2>Métricas e Indicadores de Saturación</h2>
+            
+            <div class="result-grid">
+                <div class="result-box">
+                    <p><strong>Tiempo Espera $T(x)$</strong></p>
+                    <span id="output-time" class="time-display">0.00 min</span>
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Tasa Crecimiento $T'(x)$</strong></p>
+                    <span id="output-derivative" class="derivative-display">+0.50 min/u</span>
+                </div>
+
+                <div class="result-box">
+                    <p><strong>Estado Operativo</strong></p>
+                    <span id="output-status" class="status-display">NORMAL</span>
+                </div>
+            </div>
+
+            <div class="recommendation-box">
+                <p><strong>Estrategia de Mitigación Sugerida:</strong></p>
+                <p id="output-recommendation">El sistema opera en parámetros estables. No se requieren acciones.</p>
+            </div>
+
+            <div class="chart-container">
+                <h3>Curva de Comportamiento Diferencial</h3>
+                <canvas id="queueChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
