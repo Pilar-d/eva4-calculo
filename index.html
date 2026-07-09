@@ -7,12 +7,14 @@
 
   <link rel="stylesheet" href="style.css" />
 
+  <!-- Librería para el gráfico -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
   <main class="contenedor">
 
+    <!-- ENCABEZADO -->
     <section class="hero">
       <div class="hero-texto">
         <span class="etiqueta">Proyecto de Cálculo Diferencial</span>
@@ -29,6 +31,7 @@
       </div>
     </section>
 
+    <!-- FLUJO VISUAL -->
     <section class="flujo">
       <div class="paso">
         <span>👥</span>
@@ -61,8 +64,10 @@
       </div>
     </section>
 
+    <!-- CONTENIDO PRINCIPAL -->
     <section class="grid-principal">
 
+      <!-- TARJETA DE CÁLCULO -->
       <article class="tarjeta calculadora">
         <h2>Calcular tiempo de espera</h2>
         <p class="descripcion">
@@ -85,6 +90,7 @@
         </div>
       </article>
 
+      <!-- TARJETA DE RESULTADOS -->
       <article class="tarjeta resultados">
         <h2>Resultados del sistema</h2>
 
@@ -133,6 +139,7 @@
       </article>
     </section>
 
+    <!-- MODELO Y GRÁFICO -->
     <section class="tarjeta seccion-grafico">
       <div class="grafico-texto">
         <h2>Visualización del modelo</h2>
@@ -148,10 +155,11 @@
       </div>
 
       <div class="grafico-contenedor">
-        <canvas id="grafico" style="width: 100%; height: 100%;"></canvas>
+        <canvas id="grafico"></canvas>
       </div>
     </section>
 
+    <!-- PIE -->
     <footer>
       <p>
         Prototipo académico desarrollado para aplicar funciones y derivadas en un contexto de Ingeniería en Informática.

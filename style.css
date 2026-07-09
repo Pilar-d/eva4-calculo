@@ -346,72 +346,29 @@ footer {
   font-weight: 600;
 }
 
-/* RESPONSIVE MEJORADO */
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .hero,
+  .grid-principal,
+  .seccion-grafico {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
 
-/* 1. Pantallas Medianas (Tablets - hasta 992px) */
-@media (max-width: 992px) {
-  /* Cambiamos a flex-columna en lugar de forzar un grid para mantener el comportamiento flex original */
   .hero {
-    flex-direction: column;
     text-align: center;
   }
 
   .hero-icono {
     margin: 0 auto;
-    width: 100%;
-    max-width: 400px;
-  }
-
-  .grid-principal,
-  .seccion-grafico {
-    grid-template-columns: 1fr;
   }
 
   .flujo {
     grid-template-columns: 1fr;
-    gap: 15px;
   }
 
   .flecha {
     transform: rotate(90deg);
     text-align: center;
-    margin: 10px 0;
-  }
-}
-
-/* 2. Pantallas Pequeñas (Móviles - hasta 600px) */
-@media (max-width: 600px) {
-  /* Reducimos márgenes y paddings generales para que el diseño no se asfixie */
-  .contenedor {
-    padding: 20px 0;
-  }
-
-  .hero {
-    padding: 25px 15px;
-    border-radius: 20px;
-  }
-
-  .tarjeta,
-  .paso,
-  .grafico-contenedor {
-    padding: 20px 15px;
-  }
-
-  /* Ajuste de iconos y contenedores internos para móviles */
-  .circulo-icono {
-    width: 85px;
-    height: 85px;
-    font-size: 2.8rem;
-  }
-
-  /* Apilar los resultados verticalmente para que el texto y el ícono no compitan por espacio horizontal */
-  .resultado-box {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .grafico-contenedor {
-    min-height: 250px;
   }
 }
