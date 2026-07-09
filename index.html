@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Fila Virtual</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Librería para el gráfico -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <main class="contenedor">
+
+    <!-- ENCABEZADO -->
+    <section class="hero">
+      <div class="hero-texto">
+        <span class="etiqueta">Proyecto de Cálculo Diferencial</span>
+        <h1>Simulador de Fila Virtual</h1>
+        <p>
+          Herramienta web para estimar el tiempo de espera según la cantidad de usuarios
+          conectados y analizar posibles momentos de saturación.
+        </p>
+      </div>
+
+      <div class="hero-icono">
+        <div class="circulo-icono">👥</div>
+        <p>Usuarios en espera</p>
+      </div>
+    </section>
+
+    <!-- FLUJO VISUAL -->
+    <section class="flujo">
+      <div class="paso">
+        <span>👥</span>
+        <h3>Usuarios</h3>
+        <p>Cantidad en fila</p>
+      </div>
+
+      <div class="flecha">→</div>
+
+      <div class="paso">
+        <span>🧮</span>
+        <h3>Cálculo</h3>
+        <p>Función matemática</p>
+      </div>
+
+      <div class="flecha">→</div>
+
+      <div class="paso">
+        <span>⏱️</span>
+        <h3>Espera</h3>
+        <p>Tiempo estimado</p>
+      </div>
+
+      <div class="flecha">→</div>
+
+      <div class="paso">
+        <span>🚦</span>
+        <h3>Estado</h3>
+        <p>Normal / Medio / Saturado</p>
+      </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <section class="grid-principal">
+
+      <!-- TARJETA DE CÁLCULO -->
+      <article class="tarjeta calculadora">
+        <h2>Calcular tiempo de espera</h2>
+        <p class="descripcion">
+          Ingresa la cantidad de usuarios que se encuentran en la fila virtual.
+        </p>
+
+        <div class="formulario">
+          <label for="usuarios">Cantidad de usuarios</label>
+          <input type="number" id="usuarios" placeholder="Ej: 30" min="0" />
+
+          <button onclick="calcularEspera()">Calcular espera</button>
+        </div>
+
+        <div class="mini-info">
+          <p><strong>Modelo:</strong> T(x) = 0,05x² + 0,5x</p>
+          <p><strong>Derivada:</strong> T’(x) = 0,1x + 0,5</p>
+          <p class="nota-derivada">
+            La derivada indica cuánto aumenta la espera por cada nuevo usuario.
+          </p>
+        </div>
+      </article>
+
+      <!-- TARJETA DE RESULTADOS -->
+      <article class="tarjeta resultados">
+        <h2>Resultados del sistema</h2>
+
+        <div class="resultado-box principal">
+          <span class="icono">⏱️</span>
+          <div>
+            <h3>Tiempo estimado</h3>
+            <p id="tiempo">-- minutos</p>
+          </div>
+        </div>
+
+        <div class="resultado-box">
+          <span class="icono">🚦</span>
+          <div>
+            <h3>Estado del sistema</h3>
+            <p id="estado">Sin calcular</p>
+          </div>
+        </div>
+
+        <div class="resultado-box">
+          <span class="icono">💡</span>
+          <div>
+            <h3>Recomendación</h3>
+            <p id="recomendacion">Ingrese una cantidad de usuarios para iniciar.</p>
+          </div>
+        </div>
+
+        <div class="clasificacion">
+          <h3>Clasificación del sistema</h3>
+
+          <div class="item-clasificacion">
+            <span class="punto verde"></span>
+            <p><strong>Normal:</strong> menos de 15 min</p>
+          </div>
+
+          <div class="item-clasificacion">
+            <span class="punto amarillo"></span>
+            <p><strong>Medio:</strong> 15 a 45 min</p>
+          </div>
+
+          <div class="item-clasificacion">
+            <span class="punto rojo"></span>
+            <p><strong>Saturado:</strong> más de 45 min</p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- MODELO Y GRÁFICO -->
+    <section class="tarjeta seccion-grafico">
+      <div class="grafico-texto">
+        <h2>Visualización del modelo</h2>
+        <p>
+          El gráfico muestra cómo aumenta el tiempo estimado de espera cuando crece
+          la cantidad de usuarios en la fila virtual.
+        </p>
+
+        <div class="formula">
+          <h3>Función utilizada</h3>
+          <p>T(x) = 0,05x² + 0,5x</p>
+        </div>
+      </div>
+
+      <div class="grafico-contenedor">
+        <canvas id="grafico"></canvas>
+      </div>
+    </section>
+
+    <!-- PIE -->
+    <footer>
+      <p>
+        Prototipo académico desarrollado para aplicar funciones y derivadas en un contexto de Ingeniería en Informática.
+      </p>
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
